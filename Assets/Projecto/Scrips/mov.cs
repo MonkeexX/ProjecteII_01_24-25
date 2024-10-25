@@ -6,7 +6,7 @@ public class mov : MonoBehaviour
 {
     //Variables
     public float distance = 1.0f;
-    public float cooldown = 0.5f;
+    public float cooldown = 0.2f;
     bool can_Move = true;
     public int counter = 0;
 
@@ -54,7 +54,7 @@ public class mov : MonoBehaviour
             if (cooldown < 0)
             {
                 can_Move=true;
-                cooldown = 0.5f;
+                cooldown = 0.2f;
             }
        }
     }
