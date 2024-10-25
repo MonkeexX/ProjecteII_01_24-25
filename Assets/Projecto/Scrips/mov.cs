@@ -9,6 +9,8 @@ public class mov : MonoBehaviour
     public float cooldown = 0.2f;
     bool can_Move = true;
     public int counter = 0;
+    public int maxCounter = 5;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -19,32 +21,42 @@ public class mov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-        //Move
-       if (Input.GetKeyDown(KeyCode.W)&&can_Move)
-       {
-            transform.position = new Vector2 (transform.position.x, transform.position.y + distance);
-            can_Move = false;
-            ++counter;
+     // un if que compruebe si le quedan movimientos o si no para que no se mueva
+     if (counter != maxCounter)
+        {
+            if (Input.GetKeyDown(KeyCode.W) && can_Move)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + distance);
+                can_Move = false;
+                counter++;
+            }
+            if (Input.GetKeyDown(KeyCode.S) && can_Move)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - distance);
+                can_Move = false;
+                counter++;
+            }
+            if (Input.GetKeyDown(KeyCode.D) && can_Move)
+            {
+                transform.position = new Vector2(transform.position.x + distance, transform.position.y);
+                can_Move = false;
+                counter++;
+            }
+            if (Input.GetKeyDown(KeyCode.A) && can_Move)
+            {
+                transform.position = new Vector2(transform.position.x - distance, transform.position.y);
+                can_Move = false;
+                counter++;
+            }
         }
-       if (Input.GetKeyDown(KeyCode.S) && can_Move)
-       {
-            transform.position = new Vector2(transform.position.x, transform.position.y - distance);
-            can_Move = false;
-            ++counter;
+     else
+        {
+            Destroy(gameObject);
+            Hackeo.hasActiveObject = false;
+            
         }
-       if (Input.GetKeyDown(KeyCode.D) && can_Move)
-       {
-            transform.position = new Vector2(transform.position.x + distance, transform.position.y);
-            can_Move = false;
-            ++counter;
-        }
-       if (Input.GetKeyDown(KeyCode.A) && can_Move)
-       {
-            transform.position = new Vector2(transform.position.x - distance, transform.position.y);
-            can_Move = false;
-            ++counter;
-       }
+        
+      
 
        //Cooldown
        if (can_Move==false)

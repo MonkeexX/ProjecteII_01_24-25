@@ -8,7 +8,7 @@ public class Hackeo : MonoBehaviour
 
     private mov movement;
     public static bool hasActiveObject = false;
-    public float destructionDelay = 5.0f;
+    
     void Start()
     {
         movement = GetComponent<mov>();
@@ -34,23 +34,10 @@ public class Hackeo : MonoBehaviour
                         hasActiveObject = true; // Ahora hay un objeto activo
                         Debug.Log("¡Movimiento activado para " + gameObject.name + "!");
 
-                        StartCoroutine(DestroyAfterDelay());
+                       
                     }
                 }
             }
         }
-    }
-
-    IEnumerator DestroyAfterDelay()
-    {
-        // Esperar el tiempo especificado
-        yield return new WaitForSeconds(destructionDelay);
-
-        // Destruir este GameObject
-        Debug.Log(gameObject.name + " será destruido");
-        Destroy(gameObject);
-
-        // Permitir que el siguiente GameObject sea activable
-        hasActiveObject = false;
     }
 }
