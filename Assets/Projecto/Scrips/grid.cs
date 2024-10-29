@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GridGenerator : MonoBehaviour
 {
     public GameObject floorPrefab;    // Prefab para el suelo
     public GameObject wallPrefab;     // Prefab para la pared
     public GameObject playerPrefab;   // Prefab para el jugador
-
+    
     private int width;
     private int height;
 

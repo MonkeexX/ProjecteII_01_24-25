@@ -8,11 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask obstacleLayer; // Capa para los obstáculos
 
     private bool isMoving = false;
-    Rigidbody2D rigidbody;
+
     private void Start()
     {
         this.enabled = false; 
-        rigidbody = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
