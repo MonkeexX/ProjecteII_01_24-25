@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     private Vector2 targetPosition;
     private float xInput, yInput;
     private bool isMoving;
+    public LayerMask boxLayer; // Asigna esta capa en el Inspector
+    public LayerMask wallLayer; // Asigna esta capa en el Inspector
 
     private void Start()
     {
@@ -68,7 +70,21 @@ public class Movement : MonoBehaviour
 
     private bool CanMoveToTargetPosition()
     {
-        return !Physics2D.OverlapCircle(targetPosition, 0.15f);
+        // Verificar si hay una colisión con una pared
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
+        {
+            return false; // No puedes mover si hay una pared
+        }
+
+        // Verificar si hay una colisión con una caja
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
+        {
+            
+            return false; // Permitir movimiento si hay una caja
+        }
+
+        // Si no hay colisiones, se permite el movimiento
+        return true;
     }
 
     //Quitar esto si al final este codigo se queda, esto es para el debugging
