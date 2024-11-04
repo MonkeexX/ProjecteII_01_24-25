@@ -8,6 +8,11 @@ public class Movement : MonoBehaviour
     private Vector2 targetPosition;
     private float xInput, yInput;
     private bool isMoving;
+
+    private void Start()
+    {
+        this.enabled = false;
+    }
     void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal");

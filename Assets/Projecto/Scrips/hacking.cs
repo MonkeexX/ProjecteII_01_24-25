@@ -6,12 +6,12 @@ public class Hackeo : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private PlayerMovement movement;
+    private Movement movement;
     public static bool hasActiveObject = false;
     
     void Start()
     {
-        movement = GetComponent<PlayerMovement>();
+        movement= GetComponent<Movement>();
     }
 
     // Update is called once per frame

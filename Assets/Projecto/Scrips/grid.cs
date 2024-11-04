@@ -8,6 +8,7 @@ public class GridGenerator : MonoBehaviour
     public GameObject floorPrefab;    // Prefab para el suelo
     public GameObject wallPrefab;     // Prefab para la pared
     public GameObject playerPrefab;   // Prefab para el jugador
+    public GameObject boxPrefab;
     
     private int width;
     private int height;
@@ -59,6 +60,9 @@ public class GridGenerator : MonoBehaviour
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
                 // Luego, asigna el prefab del jugador
                 objToInstantiate = playerPrefab;
+                break;
+            case "B":
+                objToInstantiate = boxPrefab;
                 break;
             default:
                 Debug.LogWarning("Tipo de celda no reconocido: " + tileType);
