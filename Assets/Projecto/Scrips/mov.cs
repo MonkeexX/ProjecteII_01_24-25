@@ -2,75 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mov : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    //Variables
-    public float distance = 1.0f;
-    public float cooldown = 0.2f;
-    bool can_Move = true;
-    public int counter = 0;
-    public int maxCounter = 5;
-    
+    public float moveTime = 0.2f; // Tiempo que tarda en moverse entre celdas
+    public LayerMask obstacleLayer; // Capa para los obstáculos
 
-    // Start is called before the first frame update
-    void Start()
+    private bool isMoving = false;
+
+    private void Start()
     {
-        this.enabled = false;
+        this.enabled = false; 
     }
-
-    // Update is called once per frame
     void Update()
     {
-     // un if que compruebe si le quedan movimientos o si no para que no se mueva
-     if (counter != maxCounter)
+        if (!isMoving)
         {
-            if (Input.GetKeyDown(KeyCode.W) && can_Move)
+            Vector3 direction = Vector3.zero;
+
+            if (Input.GetKeyDown(KeyCode.W))
+                direction = Vector3.up;
+            else if (Input.GetKeyDown(KeyCode.S))
+                direction = Vector3.down;
+            else if (Input.GetKeyDown(KeyCode.A))
+                direction = Vector3.left;
+            else if (Input.GetKeyDown(KeyCode.D))
+                direction = Vector3.right;
+
+            if (direction != Vector3.zero)
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + distance);
-                can_Move = false;
-                counter++;
-            }
-            if (Input.GetKeyDown(KeyCode.S) && can_Move)
-            {
-                transform.position = new Vector2(transform.position.x, transform.position.y - distance);
-                can_Move = false;
-                counter++;
-            }
-            if (Input.GetKeyDown(KeyCode.D) && can_Move)
-            {
-                transform.position = new Vector2(transform.position.x + distance, transform.position.y);
-                can_Move = false;
-                counter++;
-            }
-            if (Input.GetKeyDown(KeyCode.A) && can_Move)
-            {
-                transform.position = new Vector2(transform.position.x - distance, transform.position.y);
-                can_Move = false;
-                counter++;
+                Vector3 targetPosition = transform.position + direction;
+                if (CanMoveTo(targetPosition))
+                {
+                    StartCoroutine(MoveToPosition(targetPosition));
+                }
             }
         }
-     else
-        {
-            Destroy(gameObject);
-            Hackeo.hasActiveObject = false;
-            
-        }
-        
-      
-
-       //Cooldown
-       if (can_Move==false)
-       {
-            cooldown -= Time.deltaTime;
-
-            if (cooldown < 0)
-            {
-                can_Move=true;
-                cooldown = 0.2f;
-            }
-       }
     }
 
+    private bool CanMoveTo(Vector3 targetPosition)
+    {
+        // Verifica si hay un obstáculo en la celda destino
+        Collider2D hitCollider = Physics2D.OverlapCircle(targetPosition, 0.1f, obstacleLayer);
+        return hitCollider == null; // Si no hay colisión, se puede mover
+    }
 
+    private IEnumerator MoveToPosition(Vector3 targetPosition)
+    {
+        isMoving = true;
+
+        float elapsedTime = 0;
+        Vector3 startingPosition = transform.position;
+
+        while (elapsedTime < moveTime)
+        {
+            transform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime / moveTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        isMoving = false;
+    }
 }
 
