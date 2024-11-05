@@ -8,8 +8,8 @@ public class Movement : MonoBehaviour
     private Vector2 targetPosition;
     private float xInput, yInput;
     private bool isMoving;
-    public LayerMask boxLayer; // Asigna esta capa en el Inspector
-    public LayerMask wallLayer; // Asigna esta capa en el Inspector
+    public LayerMask boxLayer;
+    public LayerMask wallLayer;
 
     private void Start()
     {
@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
+        
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
@@ -38,7 +39,7 @@ public class Movement : MonoBehaviour
 
         while (timePassed < moveTime)
         {
-            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime);
+            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime); //Lerp is used to move slowly from A to B
             timePassed += Time.deltaTime;
             yield return null;
         }
@@ -70,24 +71,24 @@ public class Movement : MonoBehaviour
 
     private bool CanMoveToTargetPosition()
     {
-        // Verificar si hay una colisión con una pared
+        //Verifying if the invisible circle has collided against a wall
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
         {
-            return false; // No puedes mover si hay una pared
+            return false; //Player can't move
         }
 
-        // Verificar si hay una colisión con una caja
+        //Verifying if the invisible circle has collided against a box
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
         {
             
-            return false; // Permitir movimiento si hay una caja
+            return false; //Player can move
         }
 
-        // Si no hay colisiones, se permite el movimiento
+        //If the invisible circle hasn't collided with nothing
         return true;
     }
 
-    //Quitar esto si al final este codigo se queda, esto es para el debugging
+    //This to show the circle in the inspector
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(targetPosition, 0.15f);
