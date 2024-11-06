@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     private bool isMoving;
     public LayerMask boxLayer;
     public LayerMask wallLayer;
+    public LayerMask inactivePlayerLayer;
 
     private void Start()
     {
@@ -73,6 +74,12 @@ public class Movement : MonoBehaviour
     {
         //Verifying if the invisible circle has collided against a wall
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
+        {
+            return false; //Player can't move
+        }
+
+        //Verifying if the invisible circle has collided against a wall
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, inactivePlayerLayer))
         {
             return false; //Player can't move
         }
