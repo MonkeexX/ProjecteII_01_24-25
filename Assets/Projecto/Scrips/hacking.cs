@@ -8,6 +8,7 @@ public class Hackeo : MonoBehaviour
 
     private Movement movement;
     public static bool hasActiveObject = false;
+    public GameObject player;
     
     void Start()
     {
@@ -33,11 +34,15 @@ public class Hackeo : MonoBehaviour
                         movement.enabled = true;
                         hasActiveObject = true; // Ahora hay un objeto activo
                         Debug.Log("¡Movimiento activado para " + gameObject.name + "!");
-
-                       
+                        ChangePlayerLayer();
                     }
                 }
             }
         }
+    }
+
+    void ChangePlayerLayer()
+    {
+        player.layer = LayerMask.NameToLayer("ActivePlayer");
     }
 }
