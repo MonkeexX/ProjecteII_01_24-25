@@ -8,7 +8,7 @@ public class Hackeo : MonoBehaviour
 
     private Movement movement;
     public static bool hasActiveObject = false;
-    public GameObject player;
+    public GameObject robot;
     
     void Start()
     {
@@ -43,6 +43,6 @@ public class Hackeo : MonoBehaviour
 
     void ChangePlayerLayer()
     {
-        player.layer = LayerMask.NameToLayer("ActivePlayer");
+        robot.layer = LayerMask.NameToLayer("ActiveRobot");
     }
 }
