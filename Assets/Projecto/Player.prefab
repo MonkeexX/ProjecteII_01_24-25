@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2231322990039323520}
   - component: {fileID: 5816353378461361242}
   - component: {fileID: 863705235874375302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d824341ca34dbd4c85456e558b52af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robot: {fileID: 9171096616671049456}
 --- !u!114 &5816353378461361242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +118,9 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  inactiveRobotLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0
