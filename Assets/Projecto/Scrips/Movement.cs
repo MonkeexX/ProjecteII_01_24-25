@@ -5,12 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private float moveTime = 0.15f;
-    private Vector2 targetPosition;
+    
     private float xInput, yInput;
     private bool isMoving;
-    public LayerMask boxLayer;
-    public LayerMask wallLayer;
-    public LayerMask inactiveRobotLayer;
+    private Vector2 targetPosition;
 
     private void Start()
     {
@@ -25,10 +23,9 @@ public class Movement : MonoBehaviour
         if ((xInput != 0f || yInput != 0f) && !isMoving && Input.anyKeyDown)
         {
             CalculateTargetPosition();
-            if (CanMoveToTargetPosition())
-            {
+            
                 StartCoroutine(Move());
-            }
+            
         }
     }
 
@@ -68,31 +65,6 @@ public class Movement : MonoBehaviour
         }
 
 
-    }
-
-    private bool CanMoveToTargetPosition()
-    {
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
-        {
-            return false; //Player can't move
-        }
-
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer))
-        {
-            return false; //Player can't move
-        }
-
-        //Verifying if the invisible circle has collided against a box
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            
-            return false; //Player can move
-        }
-
-        //If the invisible circle hasn't collided with nothing
-        return true;
     }
 
     //This to show the circle in the inspector
