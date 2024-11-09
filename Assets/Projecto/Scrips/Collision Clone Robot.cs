@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CollisionLitelBot : MonoBehaviour
+public class CollisionCloneRobot : MonoBehaviour
 {
     private Vector2 targetPosition;
     public LayerMask boxLayer;
@@ -12,16 +12,16 @@ public class CollisionLitelBot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        LitelRobotCollision();
+        CloneRobotCollision();
     }
 
-    private bool LitelRobotCollision()
+    private bool CloneRobotCollision()
     {
         //Verifying if the invisible circle has collided against a wall
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
@@ -29,7 +29,7 @@ public class CollisionLitelBot : MonoBehaviour
             return false; //Player can't move
         }
 
-        //Verifying if the invisible circle has collided against a wall
+        //Verifying if the invisible circle has collided against a oter robots
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer))
         {
             return false; //Player can't move
@@ -40,13 +40,13 @@ public class CollisionLitelBot : MonoBehaviour
         {
 
             return false;
-            
+
         }
 
         //Verifying if the invisible circle has collided against a laser
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
         {
-            return true;
+            return false;
         }
 
         //Verifying if the invisible circle has collided against a placa explosiva
@@ -77,3 +77,5 @@ public class CollisionLitelBot : MonoBehaviour
         return true;
     }
 }
+
+
