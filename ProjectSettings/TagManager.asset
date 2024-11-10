@@ -15,11 +15,11 @@ TagManager:
   - Wall
   - InactivePlayer
   - ActivePlayer
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ExplosivePlaque
+  - Laser
+  - Panel
+  - Plasma
+  - Door
   - 
   - 
   - 
