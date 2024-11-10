@@ -2,22 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GridGenerator : MonoBehaviour
 {
     public GameObject floorPrefab;    // Prefab para el suelo
     public GameObject wallPrefab;     // Prefab para la pared
     public GameObject playerPrefab;   // Prefab para el jugador
     public GameObject boxPrefab;
-    public GameObject smallRobot; //Robot atraviesa laseres
-    public GameObject lasersPrefab; // Prefab de laseres
-    
+    public GameObject smallRobot;     // Robot que atraviesa lásers
+    public GameObject lasersPrefab;   // Prefab de lásers
+
     private int width;
     private int height;
 
     void Start()
     {
         GenerateGridFromTxt("MapLayout");  // Nombre del archivo sin la extensión
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            RegenerateGrid();
+        }
+    }
+
+    void RegenerateGrid()
+    {
+        // Elimina todos los objetos hijos de este objeto (los objetos de la cuadrícula)
+        foreach (Transform child in transform) //quenta la grid como hijos y obtiene el transform de estos
+        {
+            Destroy(child.gameObject);
+            
+        }
+
+        // Vuelve a generar la cuadrícula
+        GenerateGridFromTxt("MapLayout");
+
     }
 
     void GenerateGridFromTxt(string fileName)
@@ -29,7 +50,6 @@ public class GridGenerator : MonoBehaviour
             return;
         }
 
-        // Lee cada línea y elimina caracteres adicionales como \r
         string[] lines = txtFile.text.Split(new[] { "\n", "\r\n" }, System.StringSplitOptions.RemoveEmptyEntries);
         height = lines.Length;
         width = lines[0].Split(' ').Length;
@@ -58,14 +78,11 @@ public class GridGenerator : MonoBehaviour
                 objToInstantiate = wallPrefab;
                 break;
             case "P":
-                // Primero, crea el suelo en la posición del jugador
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
-                // Luego, asigna el prefab del jugador
                 objToInstantiate = playerPrefab;
                 break;
             case "S":
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
-
                 objToInstantiate = smallRobot;
                 break;
             case "B":
@@ -86,5 +103,4 @@ public class GridGenerator : MonoBehaviour
             Instantiate(objToInstantiate, position, Quaternion.identity, transform);
         }
     }
-
 }
