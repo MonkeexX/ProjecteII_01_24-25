@@ -11,6 +11,8 @@ public class GridGenerator : MonoBehaviour
     public GameObject smallRobot;     // Robot que atraviesa lásers
     public GameObject lasersPrefab;   // Prefab de lásers
 
+    //private Movement movement;
+
     private int width;
     private int height;
 
@@ -30,15 +32,15 @@ public class GridGenerator : MonoBehaviour
     void RegenerateGrid()
     {
         // Elimina todos los objetos hijos de este objeto (los objetos de la cuadrícula)
-        foreach (Transform child in transform) //quenta la grid como hijos y obtiene el transform de estos
+        foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
-            
         }
 
         // Vuelve a generar la cuadrícula
         GenerateGridFromTxt("MapLayout");
 
+        Hackeo.hasActiveObject = false;
     }
 
     void GenerateGridFromTxt(string fileName)
@@ -104,3 +106,4 @@ public class GridGenerator : MonoBehaviour
         }
     }
 }
+
