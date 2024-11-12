@@ -9,6 +9,10 @@ public class CollisionLitelBot : MonoBehaviour
     public LayerMask boxLayer;
     public LayerMask wallLayer;
     public LayerMask inactiveRobotLayer;
+    public LayerMask plasmaLayer;
+    public LayerMask explosivePanelLayer;
+    public LayerMask panelLayer;
+    public LayerMask doorLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +45,6 @@ public class CollisionLitelBot : MonoBehaviour
 
             return false;
             
-        }
-
-        //Verifying if the invisible circle has collided against a laser
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return true;
         }
 
         //Verifying if the invisible circle has collided against a placa explosiva

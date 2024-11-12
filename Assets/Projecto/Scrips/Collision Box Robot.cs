@@ -9,6 +9,11 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask boxLayer;
     public LayerMask wallLayer;
     public LayerMask inactiveRobotLayer;
+    public LayerMask laserLayer;
+    public LayerMask plasmaLayer;
+    public LayerMask explosivePanelLayer;
+    public LayerMask panelLayer;
+    public LayerMask doorLayer;
     // Start is called before the first frame update
     void Start()
     {

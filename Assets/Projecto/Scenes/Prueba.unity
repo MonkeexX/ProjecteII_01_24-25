@@ -248,6 +248,16 @@ MonoBehaviour:
   wallPrefab: {fileID: 2707985753959083617, guid: c75faf6aa5271934e9beae2e359429a6, type: 3}
   playerPrefab: {fileID: 9171096616671049456, guid: 19d6ea9f35d2ed643b5c57cb57ac5bd0, type: 3}
   boxPrefab: {fileID: 3787237977136873568, guid: 605428cfe709b9541958cc5e8d40d183, type: 3}
+  boxRobot: {fileID: 9171096616671049456, guid: f0aa9a2c22e5f3146bcde1c8f54ff6d2, type: 3}
+  smallRobot: {fileID: 9171096616671049456, guid: dda38d5827953bd489cc6a8fd39edc12, type: 3}
+  explosiveRobot: {fileID: 9171096616671049456, guid: 91cb54c37e4ed224c8f77663d596b65f, type: 3}
+  cloneRobot: {fileID: 9171096616671049456, guid: ab4193fef4a1de14aae03ca5d47fa5be, type: 3}
+  laserRobot: {fileID: 9171096616671049456, guid: 6763c1f34053f5c418936e1d12fccc10, type: 3}
+  lasersPrefab: {fileID: 3787237977136873568, guid: 5e7429ba89d989a4bba92001566fecd3, type: 3}
+  doorPrefab: {fileID: 2707985753959083617, guid: e85d98606b962254c873e54a1fe97c1f, type: 3}
+  plasmaPrefab: {fileID: 3787237977136873568, guid: 5c206910a8c2a614f8be362df6239b4b, type: 3}
+  explosivePlaquePrefab: {fileID: 3787237977136873568, guid: c8dd0c65bcd4d9f4694a2fa757cc0e9f, type: 3}
+  panelPrefab: {fileID: 3787237977136873568, guid: 0a37e1ee1dc7e1743bac522320f051ce, type: 3}
 --- !u!4 &1302770304
 Transform:
   m_ObjectHideFlags: 0
