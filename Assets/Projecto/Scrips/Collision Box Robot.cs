@@ -14,72 +14,28 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask explosivePanelLayer;
     public LayerMask panelLayer;
     public LayerMask doorLayer;
+    public bool canMove;
     // Start is called before the first frame update
-    void Start()
+    internal bool BoxRobotCollision(Vector2 playerPosition)
     {
-        
-    }
+        targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
 
-    // Update is called once per frame
-    void Update()
-    {
-        BoxRobotCollision();
-    }
-
-    private bool BoxRobotCollision()
-    {
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
         {
-            return false; //Player can't move
+            Debug.Log("Hit something");
+            return true; // Si colisiona con algún objeto, no se puede mover
         }
-
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer))
+        else
         {
-            return false; //Player can't move
+            return false; // Si no colisiona con nada, se puede mover
         }
-
-        //Verifying if the invisible circle has collided against a box
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-
-            return false; 
-            //box move
-        }
-
-        //Verifying if the invisible circle has collided against a laser
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return false;
-        }
-
-        //Verifying if the invisible circle has collided against a placa explosiva
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return false;
-        }
-
-        //Verifying if the invisible circle has collided against a plasma
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return false;
-        }
-
-        //Verifying if the invisible circle has collided against a panel
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return false;
-        }
-
-        //Verifying if the invisible circle has collided against a puerta
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            return false;
-        }
-
-        //If the invisible circle hasn't collided with nothing
-        return true;
     }
 }
 

@@ -5,27 +5,33 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private float moveTime = 0.15f;
-    
     private float xInput, yInput;
     private bool isMoving;
     private Vector2 targetPosition;
+    private CollisionBoxRobot collisionBoxRobot;
 
-    private void Start()
+    void Start()
     {
-        this.enabled = false;
+        collisionBoxRobot = GetComponent<CollisionBoxRobot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
+        this.enabled = false; // Deshabilitamos este script si es necesario al inicio
     }
+
     void Update()
     {
-        
+        // Obtenemos la entrada del jugador
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
+        // Verificamos si el jugador está intentando moverse
         if ((xInput != 0f || yInput != 0f) && !isMoving && Input.anyKeyDown)
         {
             CalculateTargetPosition();
-            
-                StartCoroutine(Move());
-            
+
+            // Verificamos si la posición de destino está libre de colisiones
+            if (!collisionBoxRobot.BoxRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
+            {
+                StartCoroutine( Move());
+            }
         }
     }
 
@@ -37,11 +43,12 @@ public class Movement : MonoBehaviour
 
         while (timePassed < moveTime)
         {
-            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime); //Lerp is used to move slowly from A to B
+            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime);
             timePassed += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition;
+
+
         isMoving = false;
     }
 
@@ -63,11 +70,9 @@ public class Movement : MonoBehaviour
         {
             targetPosition = (Vector2)transform.position + Vector2.down;
         }
-
-
     }
 
-    //This to show the circle in the inspector
+    // Esto se usa para mostrar el círculo en el inspector
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(targetPosition, 0.15f);
