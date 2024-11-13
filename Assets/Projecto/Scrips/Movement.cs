@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private float moveTime = 0.15f;
-    private float xInput, yInput;
+    public float xInput, yInput, inputSpace;
     private bool isMoving;
     private Vector2 targetPosition;
     private CollisionBoxRobot collisionBoxRobot;
@@ -13,6 +13,9 @@ public class Movement : MonoBehaviour
     private CollisionExplosiveRobot collisionExplosiveRobot;
     private CollisionLaserRobot collisionLaserRobot;
     private CollisionCloneRobot collisionCloneRobot;
+
+    public LayerMask doorLayer;
+
 
     public bool explosive = false;
     public bool clone = false;
@@ -36,6 +39,7 @@ public class Movement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
+
         // Verificamos si el jugador está intentando moverse
         if ((xInput != 0f || yInput != 0f) && !isMoving && Input.anyKeyDown)
         {
@@ -49,6 +53,9 @@ public class Movement : MonoBehaviour
             
             
         }
+
+        //Global collision with the door
+
     }
 
     IEnumerator Move()
