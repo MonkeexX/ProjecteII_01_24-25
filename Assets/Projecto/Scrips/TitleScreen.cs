@@ -7,14 +7,8 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public void Play()
     {
-
+        SceneManager.LoadScene(1);
     }
-
-    public void Levels()
-    {
-
-    }
-
     public void Exit()
     {
         Debug.Log("Saliendo...");
