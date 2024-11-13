@@ -191,3 +191,4 @@ MonoBehaviour:
   doorLayer:
     serializedVersion: 2
     m_Bits: 16384
+  canMove: 1

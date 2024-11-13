@@ -9,10 +9,18 @@ public class Movement : MonoBehaviour
     private bool isMoving;
     private Vector2 targetPosition;
     private CollisionBoxRobot collisionBoxRobot;
+    private CollisionLitelBot collisionSmallRobot;
+    private CollisionExplosiveRobot collisionExplosiveRobot;
+    private CollisionLaserRobot collisionLaserRobot;
+    private CollisionCloneRobot collisionCloneRobot;
 
     void Start()
     {
         collisionBoxRobot = GetComponent<CollisionBoxRobot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
+        collisionSmallRobot = GetComponent<CollisionLitelBot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
+        collisionExplosiveRobot = GetComponent<CollisionExplosiveRobot>();
+        collisionLaserRobot = GetComponent<CollisionLaserRobot>();
+        collisionCloneRobot = GetComponent<CollisionCloneRobot>();
         this.enabled = false; // Deshabilitamos este script si es necesario al inicio
     }
 
@@ -30,7 +38,27 @@ public class Movement : MonoBehaviour
             // Verificamos si la posición de destino está libre de colisiones
             if (!collisionBoxRobot.BoxRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
             {
-                StartCoroutine( Move());
+                StartCoroutine(Move());
+            }
+            
+            if (!collisionSmallRobot.LitelRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
+            {
+                StartCoroutine(Move());
+            }
+
+            if (!collisionExplosiveRobot.ExplosiveRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
+            {
+                StartCoroutine(Move());
+            }
+
+            if (!collisionLaserRobot.LaserRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
+            {
+                StartCoroutine(Move());
+            }
+
+            if (!collisionCloneRobot.CloneRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
+            {
+                StartCoroutine(Move());
             }
         }
     }
