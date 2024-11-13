@@ -15,6 +15,7 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask explosivePanelLayer;
     public LayerMask panelLayer;
     public LayerMask doorLayer;
+    public LayerMask wallPanelLayer;
     public bool canMove;
 
 
@@ -35,7 +36,8 @@ public class CollisionBoxRobot : MonoBehaviour
             Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-            Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+            Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
@@ -49,7 +51,8 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
@@ -61,7 +64,8 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
@@ -73,7 +77,8 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
@@ -85,12 +90,12 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
         }
-        
         else
         {
             return false; // Si no colisiona con nada, se puede mover
