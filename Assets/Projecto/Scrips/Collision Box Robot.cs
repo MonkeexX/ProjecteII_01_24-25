@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CollisionBoxRobot : MonoBehaviour
 {
+    private Movement mov;
     private Vector2 targetPosition;
     public LayerMask boxLayer;
     public LayerMask wallLayer;
@@ -15,12 +16,19 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask panelLayer;
     public LayerMask doorLayer;
     public bool canMove;
+
+
     // Start is called before the first frame update
+
+ void Start()
+    {
+        mov= GetComponent<Movement>();
+    }
     internal bool BoxRobotCollision(Vector2 playerPosition)
     {
         targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
 
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+        if (mov.box && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
@@ -32,6 +40,57 @@ public class CollisionBoxRobot : MonoBehaviour
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
         }
+
+
+        else if (mov.explosive && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+        {
+            Debug.Log("Hit something");
+            return true; // Si colisiona con algún objeto, no se puede mover
+        }
+        else if (mov.clone && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+        {
+            Debug.Log("Hit something");
+            return true; // Si colisiona con algún objeto, no se puede mover
+        }
+        else if (mov.small && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+        {
+            Debug.Log("Hit something");
+            return true; // Si colisiona con algún objeto, no se puede mover
+        }
+        else if (mov.laser && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+        {
+            Debug.Log("Hit something");
+            return true; // Si colisiona con algún objeto, no se puede mover
+        }
+        
         else
         {
             return false; // Si no colisiona con nada, se puede mover

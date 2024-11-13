@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2231322990039323520}
   - component: {fileID: 5816353378461361242}
   - component: {fileID: 863705235874375302}
-  - component: {fileID: 2762884943283521095}
+  - component: {fileID: 6008539166431348231}
   m_Layer: 8
   m_Name: ExplosiveRobot
   m_TagString: Untagged
@@ -113,6 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e4ad7c4ece9b4da6e7016389f795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosive: 1
+  clone: 0
+  small: 0
+  laser: 0
+  box: 0
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +163,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2762884943283521095
+--- !u!114 &6008539166431348231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9171096616671049456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b7e4b512a1b4a49b295cd9a8c8948d, type: 3}
+  m_Script: {fileID: 11500000, guid: a2e86318939f15b4ba8ea41a04f6d407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boxLayer:

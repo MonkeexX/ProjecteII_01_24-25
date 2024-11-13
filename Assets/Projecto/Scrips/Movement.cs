@@ -14,6 +14,12 @@ public class Movement : MonoBehaviour
     private CollisionLaserRobot collisionLaserRobot;
     private CollisionCloneRobot collisionCloneRobot;
 
+    public bool explosive = false;
+    public bool clone = false;
+    public bool small = false;
+    public bool laser = false;
+    public bool box = false;
+
     void Start()
     {
         collisionBoxRobot = GetComponent<CollisionBoxRobot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
@@ -41,25 +47,7 @@ public class Movement : MonoBehaviour
                 StartCoroutine(Move());
             }
             
-            if (!collisionSmallRobot.LitelRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
-            {
-                StartCoroutine(Move());
-            }
-
-            if (!collisionExplosiveRobot.ExplosiveRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
-            {
-                StartCoroutine(Move());
-            }
-
-            if (!collisionLaserRobot.LaserRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
-            {
-                StartCoroutine(Move());
-            }
-
-            if (!collisionCloneRobot.CloneRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
-            {
-                StartCoroutine(Move());
-            }
+            
         }
     }
 
@@ -103,6 +91,7 @@ public class Movement : MonoBehaviour
     // Esto se usa para mostrar el círculo en el inspector
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(targetPosition, 0.15f);
     }
 }
