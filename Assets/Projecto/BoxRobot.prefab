@@ -200,3 +200,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   canMove: 1
+  push: 0
+  boxMoveScript: {fileID: -2495174096420280825, guid: 605428cfe709b9541958cc5e8d40d183, type: 3}
