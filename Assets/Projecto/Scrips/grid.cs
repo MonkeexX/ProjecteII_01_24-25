@@ -8,8 +8,16 @@ public class GridGenerator : MonoBehaviour
     public GameObject wallPrefab;     // Prefab para la pared
     public GameObject playerPrefab;   // Prefab para el jugador
     public GameObject boxPrefab;
+    public GameObject boxRobot;
     public GameObject smallRobot;     // Robot que atraviesa lásers
+    public GameObject explosiveRobot;
+    public GameObject cloneRobot;
+    public GameObject laserRobot;
     public GameObject lasersPrefab;   // Prefab de lásers
+    public GameObject doorPrefab;
+    public GameObject plasmaPrefab;
+    public GameObject explosivePlaquePrefab;
+    public GameObject panelPrefab;
 
     //private Movement movement;
 
@@ -83,9 +91,25 @@ public class GridGenerator : MonoBehaviour
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
                 objToInstantiate = playerPrefab;
                 break;
+            case "V":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = boxRobot;
+                break;
             case "S":
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
                 objToInstantiate = smallRobot;
+                break;
+            case "E":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = explosiveRobot;
+                break;
+            case "C":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = cloneRobot;
+                break;
+            case "R":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = laserRobot;
                 break;
             case "B":
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
@@ -94,6 +118,22 @@ public class GridGenerator : MonoBehaviour
             case "L":
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
                 objToInstantiate = lasersPrefab;
+                break;
+            case "D":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = doorPrefab;
+                break;
+            case "T":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = plasmaPrefab;
+                break;
+            case "X":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = explosivePlaquePrefab;
+                break;
+            case "O":
+                Instantiate(floorPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = panelPrefab;
                 break;
             default:
                 Debug.LogWarning("Tipo de celda no reconocido: " + tileType);

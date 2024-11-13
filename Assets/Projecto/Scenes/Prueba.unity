@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1163295884}
   - component: {fileID: 1163295883}
   - component: {fileID: 1163295882}
+  - component: {fileID: 1163295885}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -215,6 +216,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1163295885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163295881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &1302770302
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +293,16 @@ MonoBehaviour:
   wallPrefab: {fileID: 2707985753959083617, guid: c75faf6aa5271934e9beae2e359429a6, type: 3}
   playerPrefab: {fileID: 9171096616671049456, guid: 19d6ea9f35d2ed643b5c57cb57ac5bd0, type: 3}
   boxPrefab: {fileID: 3787237977136873568, guid: 605428cfe709b9541958cc5e8d40d183, type: 3}
+  boxRobot: {fileID: 9171096616671049456, guid: f0aa9a2c22e5f3146bcde1c8f54ff6d2, type: 3}
+  smallRobot: {fileID: 9171096616671049456, guid: dda38d5827953bd489cc6a8fd39edc12, type: 3}
+  explosiveRobot: {fileID: 9171096616671049456, guid: 91cb54c37e4ed224c8f77663d596b65f, type: 3}
+  cloneRobot: {fileID: 9171096616671049456, guid: ab4193fef4a1de14aae03ca5d47fa5be, type: 3}
+  laserRobot: {fileID: 9171096616671049456, guid: 6763c1f34053f5c418936e1d12fccc10, type: 3}
+  lasersPrefab: {fileID: 3787237977136873568, guid: 5e7429ba89d989a4bba92001566fecd3, type: 3}
+  doorPrefab: {fileID: 2707985753959083617, guid: e85d98606b962254c873e54a1fe97c1f, type: 3}
+  plasmaPrefab: {fileID: 3787237977136873568, guid: 5c206910a8c2a614f8be362df6239b4b, type: 3}
+  explosivePlaquePrefab: {fileID: 3787237977136873568, guid: c8dd0c65bcd4d9f4694a2fa757cc0e9f, type: 3}
+  panelPrefab: {fileID: 3787237977136873568, guid: 0a37e1ee1dc7e1743bac522320f051ce, type: 3}
 --- !u!4 &1302770304
 Transform:
   m_ObjectHideFlags: 0

@@ -43,6 +43,6 @@ public class Hackeo : MonoBehaviour
 
     void ChangePlayerLayer()
     {
-        robot.layer = LayerMask.NameToLayer("ActiveRobot");
+        robot.layer = LayerMask.NameToLayer("ActivePlayer");
     }
 }

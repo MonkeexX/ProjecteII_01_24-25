@@ -5,30 +5,49 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private float moveTime = 0.15f;
-    private Vector2 targetPosition;
     private float xInput, yInput;
     private bool isMoving;
-    public LayerMask boxLayer;
-    public LayerMask wallLayer;
-    public LayerMask inactiveRobotLayer;
+    private Vector2 targetPosition;
+    private CollisionBoxRobot collisionBoxRobot;
+    private CollisionLitelBot collisionSmallRobot;
+    private CollisionExplosiveRobot collisionExplosiveRobot;
+    private CollisionLaserRobot collisionLaserRobot;
+    private CollisionCloneRobot collisionCloneRobot;
 
-    private void Start()
+    public bool explosive = false;
+    public bool clone = false;
+    public bool small = false;
+    public bool laser = false;
+    public bool box = false;
+
+    void Start()
     {
-        this.enabled = false;
+        collisionBoxRobot = GetComponent<CollisionBoxRobot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
+        collisionSmallRobot = GetComponent<CollisionLitelBot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
+        collisionExplosiveRobot = GetComponent<CollisionExplosiveRobot>();
+        collisionLaserRobot = GetComponent<CollisionLaserRobot>();
+        collisionCloneRobot = GetComponent<CollisionCloneRobot>();
+        this.enabled = false; // Deshabilitamos este script si es necesario al inicio
     }
+
     void Update()
     {
-        
+        // Obtenemos la entrada del jugador
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
+        // Verificamos si el jugador está intentando moverse
         if ((xInput != 0f || yInput != 0f) && !isMoving && Input.anyKeyDown)
         {
             CalculateTargetPosition();
-            if (CanMoveToTargetPosition())
+
+            // Verificamos si la posición de destino está libre de colisiones
+            if (!collisionBoxRobot.BoxRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
             {
                 StartCoroutine(Move());
             }
+            
+            
         }
     }
 
@@ -40,11 +59,12 @@ public class Movement : MonoBehaviour
 
         while (timePassed < moveTime)
         {
-            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime); //Lerp is used to move slowly from A to B
+            transform.position = Vector2.Lerp(startPosition, targetPosition, timePassed / moveTime);
             timePassed += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition;
+
+
         isMoving = false;
     }
 
@@ -66,38 +86,12 @@ public class Movement : MonoBehaviour
         {
             targetPosition = (Vector2)transform.position + Vector2.down;
         }
-
-
     }
 
-    private bool CanMoveToTargetPosition()
-    {
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer))
-        {
-            return false; //Player can't move
-        }
-
-        //Verifying if the invisible circle has collided against a wall
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer))
-        {
-            return false; //Player can't move
-        }
-
-        //Verifying if the invisible circle has collided against a box
-        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
-        {
-            
-            return false; //Player can move
-        }
-
-        //If the invisible circle hasn't collided with nothing
-        return true;
-    }
-
-    //This to show the circle in the inspector
+    // Esto se usa para mostrar el círculo en el inspector
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(targetPosition, 0.15f);
     }
 }
