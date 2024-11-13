@@ -202,4 +202,5 @@ MonoBehaviour:
   wallPanelLayer:
     serializedVersion: 2
     m_Bits: 32768
+  laser: {fileID: 3787237977136873568, guid: 5e7429ba89d989a4bba92001566fecd3, type: 3}
   canMove: 0
