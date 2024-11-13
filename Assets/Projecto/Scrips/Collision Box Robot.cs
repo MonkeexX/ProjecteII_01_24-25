@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionBoxRobot : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask doorLayer;
     public bool canMove;
 
+    private int nextIndexScene;
 
     // Start is called before the first frame update
 
@@ -28,7 +30,15 @@ public class CollisionBoxRobot : MonoBehaviour
     {
         targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
 
-        if (mov.box && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+        {
+            Debug.Log("HA ENTRADO!!!");
+            nextIndexScene = 1+ SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(nextIndexScene);
+            return true;
+        }
+
+        else if (mov.box && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, laserLayer) ||
@@ -90,7 +100,9 @@ public class CollisionBoxRobot : MonoBehaviour
             Debug.Log("Hit something");
             return true; // Si colisiona con algún objeto, no se puede mover
         }
+
         
+
         else
         {
             return false; // Si no colisiona con nada, se puede mover
