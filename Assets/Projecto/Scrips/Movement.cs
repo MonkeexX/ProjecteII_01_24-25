@@ -64,7 +64,7 @@ public class Movement : MonoBehaviour
             yield return null;
         }
 
-
+        transform.position = new Vector2(Mathf.Round(targetPosition.x), Mathf.Round(targetPosition.y));
         isMoving = false;
     }
 
