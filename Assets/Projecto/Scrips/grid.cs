@@ -19,6 +19,7 @@ public class GridGenerator : MonoBehaviour
     public GameObject explosivePlaquePrefab;
     public GameObject panelPrefab;
     public GameObject wallPanelPrefab;
+    public string level;
 
     //private Movement movement;
 
@@ -27,7 +28,7 @@ public class GridGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateGridFromTxt("MapLayout");  // Nombre del archivo sin la extensión
+        GenerateGridFromTxt(level);  // Nombre del archivo sin la extensión
     }
 
     void Update()
