@@ -19,7 +19,6 @@ public class CollisionBoxRobot : MonoBehaviour
 
     // Variable para controlar si se detecta una caja
     public bool push = false;
-    public BoxMove boxMoveScript; // Referencia al script de la caja
 
 
     // Start is called before the first frame update
@@ -30,18 +29,19 @@ public class CollisionBoxRobot : MonoBehaviour
     }
     internal bool BoxRobotCollision(Vector2 playerPosition)
     {
-        targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
-         // Verificamos si el robot está cerca de la caja y la empuja
-        if (mov.box && Physics2D.OverlapCircle(transform.position, 0.15f, boxLayer))
+      targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
         {
-            Debug.Log("colision");
-            push = true;  // Activamos el push cuando el robot toca la caja
-            if (boxMoveScript != null)
+            Debug.Log("Colisión detectada con Box");
+            GameObject box = GameObject.Find("Box(Clone)");
+
+            if (box != null)
             {
-                boxMoveScript.push = push; // Pasamos la señal de push al script de la caja
+                // Asigna una nueva posición a Box (ejemplo: desplazarlo en el eje X en 1 unidad)
+                box.transform.position += Vector3.right;
+                Debug.Log("Box se ha movido a una nueva posición.");
             }
-            return true; // Si colisiona con algún objeto, no se puede mover
-            // Aquí, puedes retornar true si quieres hacer algo más en este caso
+            return true;
         }
 
         if (mov.box && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
