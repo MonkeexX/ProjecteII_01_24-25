@@ -25,7 +25,7 @@ public class GridGenerator : MonoBehaviour
     private int width;
     private int height;
 
-    void Start()
+    void Awake()
     {
         GenerateGridFromTxt("MapLayout");  // Nombre del archivo sin la extensión
     }

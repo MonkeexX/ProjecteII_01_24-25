@@ -313,7 +313,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 148.23749, y: 0, z: 0, w: 0}
+  m_margin: {x: 123.75922, y: 0, z: 0, w: 0.7896118}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 1053506323}
-  steps: {fileID: 0}
+  movementScript: {fileID: 0}
 --- !u!1 &1163295881
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +739,18 @@ PrefabInstance:
     - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_text
       value: 'Steps:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+      propertyPath: m_margin.w
+      value: 0.7896118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+      propertyPath: m_margin.x
+      value: 123.75922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

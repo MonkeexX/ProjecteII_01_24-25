@@ -3,30 +3,29 @@ using TMPro;
 
 public class UIControler : MonoBehaviour
 {
-    public TextMeshProUGUI counterText; // Arrastra aquÃ el objeto de TextMeshPro en el Inspector
-    public Movement steps;
-
+    public TextMeshProUGUI counterText; // Arrastra aquí el objeto de TextMeshPro en el Inspector
+    public Movement movementScript;    // Referencia al script Movement
 
     void Start()
     {
-        UpdateCounterText(); // Muestra el contador inicial
+        movementScript = GameObject.Find("BoxRobot(Clone)").GetComponent<Movement>();
+        // Inicializa el texto con el valor actual de steps
+        UpdateCounterText();
     }
 
     private void Update()
     {
+        // Actualiza el contador de pasos en cada frame
         UpdateCounterText();
     }
 
     private void UpdateCounterText()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.D))
-        {
-            if (steps.steps != 0)
-            {
-                
-                counterText.text = "Steps: " + steps.steps; // Muestra el valor del contador en el texto
-            }
-        }
+        //if (movementScript != null)  // Verifica que movementScript esté asignado
+        //{
+            // Actualiza el texto con el valor de steps
+            counterText.text = "Steps: " + movementScript.steps;
+        //}
     }
 }
 
