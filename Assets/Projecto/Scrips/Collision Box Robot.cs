@@ -19,6 +19,7 @@ public class CollisionBoxRobot : MonoBehaviour
 
     // Variable para controlar si se detecta una caja
     public bool push = false;
+    private float xInput, yInput;
 
 
     // Start is called before the first frame update
@@ -29,7 +30,11 @@ public class CollisionBoxRobot : MonoBehaviour
     }
     internal bool BoxRobotCollision(Vector2 playerPosition)
     {
-      targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
+        // Obtenemos la entrada del jugador
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+
+        targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
         {
             Debug.Log("Colisión detectada con Box");
@@ -37,9 +42,26 @@ public class CollisionBoxRobot : MonoBehaviour
 
             if (box != null)
             {
+                if (xInput == 1f)
+                {
+                    box.transform.position += Vector3.right;
+                }
+                else if (xInput == -1f)
+                {
+                    box.transform.position += Vector3.left;
+                }
+                if (yInput == 1f)
+                {
+                    box.transform.position += Vector3.up;
+                }
+                else if (yInput == -1f)
+                {
+                    box.transform.position += Vector3.down;
+                }
                 // Asigna una nueva posición a Box (ejemplo: desplazarlo en el eje X en 1 unidad)
-                box.transform.position += Vector3.right;
+                
                 Debug.Log("Box se ha movido a una nueva posición.");
+
             }
             return true;
         }
