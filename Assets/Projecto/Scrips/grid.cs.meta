@@ -18,6 +18,7 @@ MonoImporter:
   - plasmaPrefab: {fileID: 3787237977136873568, guid: 5c206910a8c2a614f8be362df6239b4b, type: 3}
   - explosivePlaquePrefab: {fileID: 3787237977136873568, guid: c8dd0c65bcd4d9f4694a2fa757cc0e9f, type: 3}
   - panelPrefab: {fileID: 3787237977136873568, guid: 0a37e1ee1dc7e1743bac522320f051ce, type: 3}
+  - wallPanelPrefab: {fileID: 3787237977136873568, guid: b6df7a0fdd13f164e9bcbd8db69d7109, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

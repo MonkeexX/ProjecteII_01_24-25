@@ -16,6 +16,7 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask explosivePanelLayer;
     public LayerMask panelLayer;
     public LayerMask doorLayer;
+    public LayerMask wallPanelLayer;
     public bool canMove;
 
     private int nextIndexScene;
@@ -28,7 +29,7 @@ public class CollisionBoxRobot : MonoBehaviour
     }
     internal bool BoxRobotCollision(Vector2 playerPosition)
     {
-        targetPosition = playerPosition; // Asignamos la posición del jugador al targetPosition
+        targetPosition = playerPosition; // Asignamos la posiciï¿½n del jugador al targetPosition
 
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
         {
@@ -45,10 +46,22 @@ public class CollisionBoxRobot : MonoBehaviour
             Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-            Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+            Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+            Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
+            if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
+            {
+                Debug.Log("Hit wall panel, destroying laserPrefab");
+                GameObject laser = GameObject.Find("Lasers(Clone)"); // Buscar el objeto laserPrefab en la escena
+                if (laser != null)
+                {
+                    Destroy(laser); // Eliminar el objeto
+                }
+                return true; // Devuelve true para indicar que hubo una colisiï¿½n
+            }
+
             Debug.Log("Hit something");
-            return true; // Si colisiona con algún objeto, no se puede mover
+            return true; // Si colisiona con algï¿½n objeto, no se puede mover
         }
 
 
@@ -59,10 +72,22 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
+            if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
+            {
+                Debug.Log("Hit wall panel, destroying laserPrefab");
+                GameObject laser = GameObject.Find("Lasers(Clone)"); // Buscar el objeto laserPrefab en la escena
+                if (laser != null)
+                {
+                    Destroy(laser); // Eliminar el objeto
+                }
+                return true; // Devuelve true para indicar que hubo una colisiï¿½n
+            }
+
             Debug.Log("Hit something");
-            return true; // Si colisiona con algún objeto, no se puede mover
+            return true; // Si colisiona con algï¿½n objeto, no se puede mover
         }
         else if (mov.clone && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
@@ -71,10 +96,22 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
+            if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
+            {
+                Debug.Log("Hit wall panel, destroying laserPrefab");
+                GameObject laser = GameObject.Find("Lasers(Clone)"); // Buscar el objeto laserPrefab en la escena
+                if (laser != null)
+                {
+                    Destroy(laser); // Eliminar el objeto
+                }
+                return true; // Devuelve true para indicar que hubo una colisiï¿½n
+            }
+
             Debug.Log("Hit something");
-            return true; // Si colisiona con algún objeto, no se puede mover
+            return true; // Si colisiona con algï¿½n objeto, no se puede mover
         }
         else if (mov.small && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
@@ -83,10 +120,22 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
+            if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
+            {
+                Debug.Log("Hit wall panel, destroying laserPrefab");
+                GameObject laser = GameObject.Find("Lasers(Clone)"); // Buscar el objeto laserPrefab en la escena
+                if (laser != null)
+                {
+                    Destroy(laser); // Eliminar el objeto
+                }
+                return true; // Devuelve true para indicar que hubo una colisiï¿½n
+            }
+
             Debug.Log("Hit something");
-            return true; // Si colisiona con algún objeto, no se puede mover
+            return true; // Si colisiona con algï¿½n objeto, no se puede mover
         }
         else if (mov.laser && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
@@ -95,14 +144,23 @@ public class CollisionBoxRobot : MonoBehaviour
            Physics2D.OverlapCircle(targetPosition, 0.15f, plasmaLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, explosivePanelLayer) ||
            Physics2D.OverlapCircle(targetPosition, 0.15f, panelLayer) ||
-           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
+           Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer) ||
+           Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
         {
+            if (Physics2D.OverlapCircle(targetPosition, 0.15f, wallPanelLayer))
+            {
+                Debug.Log("Hit wall panel, destroying laserPrefab");
+                GameObject laser = GameObject.Find("Lasers(Clone)"); // Buscar el objeto laserPrefab en la escena
+                if (laser != null)
+                {
+                    Destroy(laser); // Eliminar el objeto
+                }
+                return true; // Devuelve true para indicar que hubo una colisiï¿½n
+            }
+
             Debug.Log("Hit something");
-            return true; // Si colisiona con algún objeto, no se puede mover
+            return true; // Si colisiona con algï¿½n objeto, no se puede mover
         }
-
-        
-
         else
         {
             return false; // Si no colisiona con nada, se puede mover

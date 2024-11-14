@@ -18,6 +18,7 @@ public class GridGenerator : MonoBehaviour
     public GameObject plasmaPrefab;
     public GameObject explosivePlaquePrefab;
     public GameObject panelPrefab;
+    public GameObject wallPanelPrefab;
 
     //private Movement movement;
 
@@ -134,6 +135,10 @@ public class GridGenerator : MonoBehaviour
             case "O":
                 Instantiate(floorPrefab, position, Quaternion.identity, transform);
                 objToInstantiate = panelPrefab;
+                break;
+            case "W":
+                Instantiate(wallPrefab, position, Quaternion.identity, transform);
+                objToInstantiate = wallPanelPrefab;
                 break;
             default:
                 Debug.LogWarning("Tipo de celda no reconocido: " + tileType);
