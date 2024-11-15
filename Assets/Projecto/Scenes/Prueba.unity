@@ -340,7 +340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 1053506323}
-  movementScript: {fileID: 0}
+  movementScript1: {fileID: 0}
+  movementScript2: {fileID: 0}
 --- !u!1 &1163295881
 GameObject:
   m_ObjectHideFlags: 0

@@ -125,7 +125,7 @@ MonoBehaviour:
   small: 0
   laser: 0
   box: 1
-  steps: 3
+  steps: 0
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0

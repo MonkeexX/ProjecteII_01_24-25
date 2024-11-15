@@ -33,6 +33,16 @@ public class Movement : MonoBehaviour
         collisionLaserRobot = GetComponent<CollisionLaserRobot>();
         collisionCloneRobot = GetComponent<CollisionCloneRobot>();
         this.enabled = false; // Deshabilitamos este script si es necesario al inicio
+
+
+        if (box == true)
+        {
+            steps = 10;
+        }
+        if (small == true) 
+        {
+            steps = 15;
+        }
     }
 
     void Update()

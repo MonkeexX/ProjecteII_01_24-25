@@ -125,7 +125,7 @@ MonoBehaviour:
   small: 1
   laser: 0
   box: 0
-  steps: 3
+  steps: 0
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -210,4 +210,4 @@ MonoBehaviour:
   wallPanelLayer:
     serializedVersion: 2
     m_Bits: 32768
-  canMove: 0
+  canMove: 1
