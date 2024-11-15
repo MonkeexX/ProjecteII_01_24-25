@@ -225,11 +225,11 @@ RectTransform:
   m_Father: {fileID: 1353886577}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326.1056, y: 147.22437}
-  m_SizeDelta: {x: 415.7888, y: 117.5513}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 402.42, y: 117.5513}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1053506323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,8 +277,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -652,11 +652,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_RootOrder
@@ -664,23 +664,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 415.7888
+      value: 402.42
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -716,11 +716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 326.1056
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 147.22437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139510627884686028, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -743,12 +743,20 @@ PrefabInstance:
       value: 'Steps:'
       objectReference: {fileID: 0}
     - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_margin.w
       value: 0.7896118
       objectReference: {fileID: 0}
     - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_margin.x
       value: 123.75922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
       propertyPath: m_VerticalAlignment
