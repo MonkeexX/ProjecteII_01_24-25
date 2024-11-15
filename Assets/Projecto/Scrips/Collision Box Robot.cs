@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using WindowsInput = UnityEngine.Windows.Input;
+
 
 public class CollisionBoxRobot : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class CollisionBoxRobot : MonoBehaviour
     public LayerMask doorLayer;
     public LayerMask wallPanelLayer;
     public bool canMove;
+    public bool push = false;
+    private float xInput, yInput;
 
     private int nextIndexScene;
 
@@ -29,6 +33,9 @@ public class CollisionBoxRobot : MonoBehaviour
     }
     internal bool BoxRobotCollision(Vector2 playerPosition)
     {
+        // Obtenemos la entrada del jugador
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
         targetPosition = playerPosition; // Asignamos la posici�n del jugador al targetPosition
 
         if (Physics2D.OverlapCircle(targetPosition, 0.15f, doorLayer))
@@ -39,7 +46,36 @@ public class CollisionBoxRobot : MonoBehaviour
             Hackeo.hasActiveObject = false;
             return true;
         }
+        if (Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer))
+        {
+            Debug.Log("Colisión detectada con Box");
+            GameObject box = GameObject.Find("Box(Clone)");
 
+            if (box != null)
+            {
+                if (xInput == 1f)
+                {
+                    box.transform.position += Vector3.right;
+                }
+                else if (xInput == -1f)
+                {
+                    box.transform.position += Vector3.left;
+                }
+                if (yInput == 1f)
+                {
+                    box.transform.position += Vector3.up;
+                }
+                else if (yInput == -1f)
+                {
+                    box.transform.position += Vector3.down;
+                }
+                // Asigna una nueva posición a Box (ejemplo: desplazarlo en el eje X en 1 unidad)
+
+                Debug.Log("Box se ha movido a una nueva posición.");
+
+            }
+            return true;
+        }
         else if (mov.box && Physics2D.OverlapCircle(targetPosition, 0.15f, wallLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, inactiveRobotLayer) ||
             Physics2D.OverlapCircle(targetPosition, 0.15f, boxLayer) ||
