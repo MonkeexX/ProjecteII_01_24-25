@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private CollisionExplosiveRobot collisionExplosiveRobot;
     private CollisionLaserRobot collisionLaserRobot;
     private CollisionCloneRobot collisionCloneRobot;
+    public GameObject robot;
 
     public LayerMask doorLayer;
 
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
     public bool small = false;
     public bool laser = false;
     public bool box = false;
+    public int steps = 0;
 
     void Start()
     {
@@ -31,6 +33,16 @@ public class Movement : MonoBehaviour
         collisionLaserRobot = GetComponent<CollisionLaserRobot>();
         collisionCloneRobot = GetComponent<CollisionCloneRobot>();
         this.enabled = false; // Deshabilitamos este script si es necesario al inicio
+
+
+        if (box == true)
+        {
+            steps = 10;
+        }
+        if (small == true) 
+        {
+            steps = 15;
+        }
     }
 
     void Update()
@@ -39,16 +51,22 @@ public class Movement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
+        if (steps == 0)
+        {
+            Destroy(robot);
+        }
 
         // Verificamos si el jugador está intentando moverse
         if ((xInput != 0f || yInput != 0f) && !isMoving && Input.anyKeyDown)
         {
+
             CalculateTargetPosition();
 
             // Verificamos si la posición de destino está libre de colisiones
             if (!collisionBoxRobot.BoxRobotCollision(targetPosition)) // Solo permitimos el movimiento si no hay colisiones
             {
                 StartCoroutine(Move());
+                steps--;
             }
             
             

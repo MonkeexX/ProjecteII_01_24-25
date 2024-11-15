@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5816353378461361242}
   - component: {fileID: 863705235874375302}
   - component: {fileID: 26595284922995304}
+  - component: {fileID: -688675674792262300}
   m_Layer: 8
   m_Name: CloneRobot
   m_TagString: Untagged
@@ -113,11 +114,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e4ad7c4ece9b4da6e7016389f795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xInput: 0
+  yInput: 0
+  inputSpace: 0
+  robot: {fileID: 9171096616671049456}
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 0
   explosive: 0
   clone: 1
   small: 0
   laser: 0
   box: 0
+  steps: 0
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,4 +208,21 @@ MonoBehaviour:
   doorLayer:
     serializedVersion: 2
     m_Bits: 16384
+  wallPanelLayer:
+    serializedVersion: 2
+    m_Bits: 0
   canMove: 0
+--- !u!114 &-688675674792262300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171096616671049456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb186ca75790d2a40a3b9d86057a45ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterText: {fileID: 7111516564802876998, guid: 14c402aed7d3cd742878d006902f7f1d, type: 3}
+  counter: 3
