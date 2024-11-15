@@ -125,7 +125,7 @@ MonoBehaviour:
   small: 0
   laser: 0
   box: 1
-  steps: 10
+  steps: 9
 --- !u!61 &863705235874375302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,3 +211,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   canMove: 0
+  push: 0
