@@ -9,15 +9,12 @@ EditorBuildSettings:
     path: Assets/Projecto/Scenes/TitleScreen.unity
     guid: 8cb71f48bdecd234c997db83a843ca0d
   - enabled: 1
-    path: Assets/Projecto/Scenes/Level 3.unity
-    guid: 217e2472c899a1d4ba7743b2f53cb3ce
+    path: Assets/Projecto/Scenes/Level 1.unity
+    guid: 4a9ced1bb1f863943a3195313e019138
   - enabled: 1
     path: Assets/Projecto/Scenes/Level 2.unity
     guid: eaa385423e5e2434ab2db994bf0c5b5f
   - enabled: 1
     path: Assets/Projecto/Scenes/Level 3.unity
     guid: 8f030c0e07b57b8488262e71ac06315f
-  - enabled: 0
-    path: Assets/Projecto/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

@@ -36,6 +36,7 @@ public class CollisionBoxRobot : MonoBehaviour
             Debug.Log("HA ENTRADO!!!");
             nextIndexScene = 1+ SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(nextIndexScene);
+            Hackeo.hasActiveObject = false;
             return true;
         }
 

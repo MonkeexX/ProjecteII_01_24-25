@@ -48,7 +48,7 @@ public class GridGenerator : MonoBehaviour
         }
 
         // Vuelve a generar la cuadrícula
-        GenerateGridFromTxt("MapLayout");
+        GenerateGridFromTxt(level);
 
         Hackeo.hasActiveObject = false;
     }

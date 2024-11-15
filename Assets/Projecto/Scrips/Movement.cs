@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     private CollisionLaserRobot collisionLaserRobot;
     private CollisionCloneRobot collisionCloneRobot;
     public GameObject robot;
+ 
 
     public LayerMask doorLayer;
 
@@ -27,22 +28,13 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        this.enabled = false; // Deshabilitamos este script si es necesario al inicio
+
         collisionBoxRobot = GetComponent<CollisionBoxRobot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
         collisionSmallRobot = GetComponent<CollisionLitelBot>(); // Obtiene el script CollisionBoxRobot adjunto al mismo GameObject
         collisionExplosiveRobot = GetComponent<CollisionExplosiveRobot>();
         collisionLaserRobot = GetComponent<CollisionLaserRobot>();
         collisionCloneRobot = GetComponent<CollisionCloneRobot>();
-        this.enabled = false; // Deshabilitamos este script si es necesario al inicio
-
-
-        if (box == true)
-        {
-            steps = 10;
-        }
-        if (small == true) 
-        {
-            steps = 15;
-        }
     }
 
     void Update()
@@ -54,6 +46,7 @@ public class Movement : MonoBehaviour
         if (steps == 0)
         {
             Destroy(robot);
+            Hackeo.hasActiveObject = false;
         }
 
         // Verificamos si el jugador está intentando moverse
